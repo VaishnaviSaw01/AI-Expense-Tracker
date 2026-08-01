@@ -1,0 +1,56 @@
+:root {
+  --bg: #F4F6FA;
+  --surface: #FFFFFF;
+  --ink: #1B1D23;
+  --ink-soft: #5B6270;
+  --indigo: #241B42;
+  --indigo-2: #4C3A75;
+  --amber: #E8A33D;
+  --amber-soft: #FBEBD3;
+  --brick: #C1502E;
+  --border: #E1E5EC;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+input, select {
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--amber-soft);
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--indigo-2);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}

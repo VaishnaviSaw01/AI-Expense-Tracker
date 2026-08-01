@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ============================================
+   AI Expense Tracker — Ledger Theme (Refined)
+   ============================================ */
+
+:root {
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+  --font-sans: 'Inter', 'Segoe UI', sans-serif;
+
+  --bg: #F5F4F1;
+  --surface: #FFFFFF;
+  --surface-raised: #FCFCFB;
+  --border: #E4E1DA;
+
+  --ink: #211D2E;
+  --ink-soft: #6E6A7C;
+
+  --indigo: #2B1F5E;
+  --indigo-2: #4A3C8C;
+  --indigo-soft: #EFEBFA;
+
+  --amber: #C77D2E;
+  --amber-soft: #FBEFDF;
+
+  --brick: #B23B3B;
+  --brick-soft: #FBEBEB;
+
+  --shadow-sm: 0 1px 3px rgba(33, 29, 46, 0.06);
+  --shadow-md: 0 6px 20px rgba(33, 29, 46, 0.08);
+  --shadow-card-hover: 0 8px 24px rgba(43, 31, 94, 0.10);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  background-image: radial-gradient(circle at 1px 1px, rgba(43,31,94,0.04) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 40px 24px 80px;
+}
+
+.app__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.header__title {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--indigo);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.header__total { text-align: right; }
+
+.header__total-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.header__total-value {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--indigo);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Layout ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+.stack { display: flex; flex-direction: column; gap: 24px; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card__title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--indigo);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card__title-mark {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--amber);
+  display: inline-block;
+}
+
+/* ---------- Form ---------- */
+.form__row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form__field { display: flex; flex-direction: column; gap: 6px; }
+
+.form__field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.form__field input,
+.form__field select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--surface-raised);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form__field input:focus,
+.form__field select:focus {
+  outline: none;
+  border-color: var(--indigo-2);
+  box-shadow: 0 0 0 3px var(--indigo-soft);
+}
+
+.form__submit {
+  width: 100%;
+  margin-top: 6px;
+  padding: 11px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--indigo);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.form__submit:hover { background: var(--indigo-2); }
+.form__submit:active { transform: scale(0.99); }
+
+.form__error {
+  color: var(--brick);
+  font-size: 13px;
+  margin: -4px 0 12px;
+  padding: 8px 10px;
+  background: var(--brick-soft);
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Category pills ---------- */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pill {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pill:hover { border-color: var(--indigo-2); color: var(--indigo); }
+
+.pill--active {
+  background: var(--indigo);
+  color: white;
+  border-color: var(--indigo);
+}
+
+/* ---------- Ledger ---------- */
+.ledger { display: flex; flex-direction: column; }
+
+.ledger__row {
+  display: grid;
+  grid-template-columns: 78px 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 4px;
+  border-bottom: 1px dashed var(--border);
+  transition: background 0.15s ease;
+}
+
+.ledger__row:hover { background: var(--surface-raised); }
+.ledger__row:last-child { border-bottom: none; }
+
+.ledger__date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.ledger__desc { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+
+.ledger__desc-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ledger__category {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--indigo-2);
+  width: fit-content;
+  background: var(--amber-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.ledger__amount {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.ledger__delete {
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.ledger__delete:hover { color: var(--brick); background: var(--brick-soft); }
+
+.ledger__empty {
+  padding: 36px 10px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.sort-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.sort-controls select {
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-family: var(--font-sans);
+  background: var(--surface-raised);
+  color: var(--ink);
+}
+
+/* ---------- Top expenses (receipt) ---------- */
+.receipt__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px dotted var(--border);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.receipt__row:last-child { border-bottom: none; }
+
+.receipt__rank { color: var(--amber); font-weight: 600; margin-right: 8px; }
+.receipt__desc { color: var(--ink); }
+.receipt__amount { color: var(--indigo); font-weight: 600; }
+
+/* ---------- Insight card ---------- */
+.insight__button {
+  padding: 10px 16px;
+  border: 1px solid var(--indigo);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--indigo);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.insight__button:hover { background: var(--indigo); color: white; box-shadow: var(--shadow-sm); }
+.insight__button:disabled { opacity: 0.5; cursor: default; }
+.insight__button:disabled:hover { background: transparent; color: var(--indigo); }
+
+.insight__hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+/* ---------- Horizontal card (full-width insight) ---------- */
+.card--horizontal {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-top: 24px;
+}
+
+.card--horizontal .card__side {
+  flex: 0 0 200px;
+}
+
+.card--horizontal .card__main {
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.insight__placeholder {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  font-style: italic;
+  padding: 16px;
+  background: var(--surface-raised);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  margin: 0;
+}
+
+.insight__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.insight__section {
+  padding: 14px 16px;
+  background: var(--amber-soft);
+  border-left: 3px solid var(--amber);
+  border-radius: var(--radius-sm);
+}
+
+.insight__heading {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+  margin: 0 0 6px 0;
+}
+
+.insight__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .card--horizontal {
+    flex-direction: column;
+  }
+  .card--horizontal .card__side {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* ---------- Chart ---------- */
+.chart-wrap { width: 100%; height: 230px; }
+
+/* ---------- Theme toggle ---------- */
+.theme-toggle {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.theme-toggle__track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 56px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  padding: 0 6px;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle__icon {
+  position: relative;
+  z-index: 1;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.theme-toggle__icon svg { width: 100%; height: 100%; }
+
+.theme-toggle__icon--sun { color: var(--amber); margin-right: auto; }
+.theme-toggle__icon--moon { color: var(--ink-soft); margin-left: auto; opacity: 0.5; }
+
+.theme-toggle__knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--indigo);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.28s ease;
+}
+
+.app.dark .theme-toggle__track {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.app.dark .theme-toggle__knob {
+  transform: translateX(26px);
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+}
+
+.app.dark .theme-toggle__icon--sun { opacity: 0.4; }
+.app.dark .theme-toggle__icon--moon { color: #f5f5f5; opacity: 1; }
+.ledger__row {
+  display: grid;
+  grid-template-columns: 78px 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 4px;
+  border-bottom: 1px dashed var(--border);
+  border-left: 4px solid var(--accent-color, transparent);   /* ← add this line */
+  padding-left: 10px;                                         /* ← add this too, so the color has room to show */
+  transition: background 0.15s ease;
+}
+/* ---------- Footer ---------- */
+.footnote {
+  margin-top: 40px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+}

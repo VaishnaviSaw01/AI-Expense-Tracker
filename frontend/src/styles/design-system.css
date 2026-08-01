@@ -1,0 +1,302 @@
+/* ============================================
+   AI Expense Tracker — Design System
+   Fintech-inspired: clean, data-forward, trustworthy
+   ============================================ */
+
+:root {
+  /* Colors */
+  --color-bg: #F6F7F9;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F0F2F5;
+  --color-border: #E3E6EB;
+
+  --color-text-primary: #16202B;
+  --color-text-secondary: #5B6572;
+  --color-text-muted: #8A93A0;
+
+  --color-accent: #0E7C6B;        /* deep teal — growth/finance */
+  --color-accent-hover: #0B6455;
+  --color-accent-soft: #E4F3F0;
+
+  --color-warn: #B45309;          /* amber — overspend / cut-cost flags */
+  --color-warn-soft: #FBF0E3;
+
+  --color-danger: #C0392B;
+  --color-danger-soft: #FBEAE8;
+
+  /* Typography */
+  --font-heading: 'Sora', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Radius & shadow */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(22, 32, 43, 0.06);
+  --shadow-md: 0 4px 16px rgba(22, 32, 43, 0.08);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2) 0;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 26px; }
+h2 { font-size: 20px; }
+h3 { font-size: 16px; }
+
+p { margin: 0 0 var(--space-3) 0; color: var(--color-text-secondary); }
+
+/* ---------- App shell ---------- */
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+.app-header .brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.app-header .brand::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  display: inline-block;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.grid-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.stat-card .label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.stat-card .value {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--color-accent-hover); }
+
+.btn-secondary {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+.btn-secondary:hover { background: var(--color-surface-alt); }
+
+/* ---------- Form inputs ---------- */
+.form-group { margin-bottom: var(--space-4); }
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 14px;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.form-input:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+/* ---------- Table (expense list) ---------- */
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.expense-table th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.expense-table td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.expense-table tr:hover td { background: var(--color-surface-alt); }
+
+.amount { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* Category badge */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--color-surface-alt);
+  color: var(--color-text-secondary);
+}
+
+.badge-food { background: var(--color-accent-soft); color: var(--color-accent-hover); }
+.badge-entertainment { background: var(--color-warn-soft); color: var(--color-warn); }
+.badge-shopping { background: #EEECFB; color: #5B3FBF; }
+
+/* ---------- Insight card ---------- */
+.insight-card {
+  background: linear-gradient(135deg, var(--color-accent-soft) 0%, var(--color-surface) 60%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.insight-card .icon-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  margin-bottom: var(--space-3);
+}
+
+.insight-card .insight-text {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--color-text-primary);
+  white-space: pre-line;
+}
+
+.insight-card .insight-empty {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* ---------- Loading / skeleton ---------- */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-surface-alt) 25%, #E8EAED 37%, var(--color-surface-alt) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .app-shell { padding: var(--space-4); }
+  .grid-summary { grid-template-columns: 1fr 1fr; }
+  h1 { font-size: 21px; }
+}
