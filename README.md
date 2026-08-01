@@ -265,5 +265,4 @@ This executes `demo.js`, printing the results of merge sort, binary search, hash
 
 ## Author
 
-Vaishnavi Saw
-Shailaja Singh
+Vaishnavi Saw AND Shailaja Singh
